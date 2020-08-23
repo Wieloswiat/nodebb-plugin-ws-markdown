@@ -194,7 +194,16 @@ var Markdown = {
         async.waterfall(
             [
                 function (next) {
-                    raw = Markdown.preParse(raw);
+                    if (
+                        data &&
+                        data.postData &&
+                        data.postData.content &&
+                        parser
+                    ) {
+                        data.postData.content = Markdown.preParse(
+                            data.postData.content
+                        );
+                    }
                     next();
                 },
                 function (next) {
@@ -220,7 +229,11 @@ var Markdown = {
         async.waterfall(
             [
                 function (next) {
-                    raw = Markdown.preParse(raw);
+                    if (data && data.userData && data.userData.signature) {
+                        data.userData.signature = Markdown.preParse(
+                            data.userData.signature
+                        );
+                    }
                     next();
                 },
                 function (next) {
@@ -246,7 +259,7 @@ var Markdown = {
         async.waterfall(
             [
                 function (next) {
-                    raw = Markdown.preParse(raw);
+                    aboutme = Markdown.preParse(aboutme);
                     next();
                 },
                 function (next) {
