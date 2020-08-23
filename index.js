@@ -252,6 +252,10 @@ var Markdown = {
         async.waterfall(
             [
                 function (next) {
+                    raw = Markdown.preParse(raw);
+                    next();
+                },
+                function (next) {
                     raw = raw && parser ? parser.render(raw) : raw;
                     process.nextTick(next, null, raw);
                 },
@@ -260,11 +264,18 @@ var Markdown = {
             callback
         );
     },
+    preParse: function (raw) {
+        var startDash = /^-/gm;
+        if (startDash.test(raw)) {
+            raw = raw.replace(startDash, "\\-");
+        }
+        return raw;
+    },
 
     postParse: function (payload, next) {
         var italicMention = /@<em>([^<]+)<\/em>/g;
         var boldMention = /@<strong>([^<]+)<\/strong>/g;
-        var startDash = /^-/gm;
+
         var execute = function (html) {
             // Replace all italicised mentions back to regular mentions
             if (italicMention.test(html)) {
@@ -276,9 +287,7 @@ var Markdown = {
                     return "@__" + slug + "__";
                 });
             }
-            if (startDash.test(html)) {
-                html = html.replace(startDash, "\\-");
-            }
+
             return html;
         };
 
@@ -360,7 +369,7 @@ var Markdown = {
         config.allowedAttributes.ol.push("start");
         config.allowedAttributes.th.push("colspan", "rowspan");
         config.allowedAttributes.td.push("colspan", "rowspan");
-
+        config.allowedTags.concat(["mark", "ins", "sup", "sub"]);
         return config;
     },
 
@@ -390,7 +399,13 @@ var Markdown = {
                 });
             });
         });
-
+        parser.use(require("markdown-it-mark"));
+        parser.use(require("markdown-it-ins"));
+        parser.use(require("markdown-it-abbr"));
+        parser.use(require("markdown-it-sup"));
+        parser.use(require("markdown-it-sub"));
+        parser.use(require("markdown-it-smartarrows"));
+        parser.use(require("markdown-it-inline-comments"));
         // Update renderer to add some classes to all images
         var renderImage =
             parser.renderer.rules.image ||
