@@ -364,12 +364,11 @@ var Markdown = {
     },
 
     updateSanitizeConfig: async (config) => {
-        config.allowedTags.push("input");
+        config.allowedTags.push("input", "mark", "ins", "sup", "sub");
         config.allowedAttributes.input = ["type", "checked"];
         config.allowedAttributes.ol.push("start");
         config.allowedAttributes.th.push("colspan", "rowspan");
         config.allowedAttributes.td.push("colspan", "rowspan");
-        config.allowedTags.concat(["mark", "ins", "sup", "sub"]);
         return config;
     },
 
