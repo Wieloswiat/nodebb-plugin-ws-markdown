@@ -265,7 +265,7 @@ var Markdown = {
         );
     },
     preParse: function (raw) {
-        const startDash = /^-[\w\s\p{L}\p{N}]/gm;
+        const startDash = /^-[\w\s\p{L}\p{N}]/gmu;
         const startPlus = /^\+[\w\s\p{L}\p{N}]/gmu;
         if (startDash.test(raw)) {
             raw = raw.replace(startDash, "\\-");
