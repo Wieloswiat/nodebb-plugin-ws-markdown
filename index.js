@@ -265,9 +265,9 @@ var Markdown = {
         );
     },
     preParse: function (raw) {
-        var startDash = /^-/gm;
-        if (startDash.test(raw)) {
-            raw = raw.replace(startDash, "\\-");
+        var listIgnore = /^[\-\+]/gm;
+        if (listIgnore.test(raw)) {
+            raw = raw.replace(listIgnore, "\\-");
         }
         return raw;
     },
