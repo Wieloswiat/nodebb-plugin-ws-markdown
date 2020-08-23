@@ -194,6 +194,10 @@ var Markdown = {
         async.waterfall(
             [
                 function (next) {
+                    raw = Markdown.preParse(raw);
+                    next();
+                },
+                function (next) {
                     if (
                         data &&
                         data.postData &&
@@ -216,6 +220,10 @@ var Markdown = {
         async.waterfall(
             [
                 function (next) {
+                    raw = Markdown.preParse(raw);
+                    next();
+                },
+                function (next) {
                     if (
                         data &&
                         data.userData &&
@@ -237,6 +245,10 @@ var Markdown = {
     parseAboutMe: function (aboutme, callback) {
         async.waterfall(
             [
+                function (next) {
+                    raw = Markdown.preParse(raw);
+                    next();
+                },
                 function (next) {
                     aboutme =
                         aboutme && parser ? parser.render(aboutme) : aboutme;
@@ -265,7 +277,7 @@ var Markdown = {
         );
     },
     preParse: function (raw) {
-        const listStart = /^[\-\+][\w\s\p{L}\p{N}]/gmu;
+        const listStart = /^[\-\+][\w\s\p{L}\p{N}<]/gmu;
         if (listStart.test(raw)) {
             raw = raw.replace(listStart, (match) => "\\" + match);
         }
