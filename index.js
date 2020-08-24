@@ -431,9 +431,12 @@ var Markdown = {
         parser.use(require("markdown-it-smartarrows"));
         parser.use(require("markdown-it-inline-comments"));
         parser.use(require("markdown-it-deflist"));
-        parser.use(require("markdown-it-classy"));
+        parser.use(require("markdown-it-attrs"), {
+            leftDelimiter: "{",
+            rightDelimiter: "}",
+            allowedAttributes: ["class", "id", "target", "rel"],
+        });
         parser.use(require("markdown-it-hashtag"));
-        parser.use(require('markdown-it-container');
         // Update renderer to add some classes to all images
         var renderImage =
             parser.renderer.rules.image ||
