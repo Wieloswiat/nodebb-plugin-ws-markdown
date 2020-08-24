@@ -1,6 +1,6 @@
 {
     "name": "nodebb-plugin-ws-markdown",
-    "version": "8.13.4",
+    "version": "8.13.5",
     "description": "A Markdown parser for NodeBB",
     "main": "index.js",
     "repository": {
@@ -37,7 +37,6 @@
         "markdown-it-classy": "^0.2.0",
         "markdown-it-deflist": "^2.0.3",
         "markdown-it-hashtag": "^0.4.0",
-        "markdown-it-html5-media": "^0.6.0",
         "markdown-it-inline-comments": "^1.0.1",
         "markdown-it-ins": "^3.0.0",
         "markdown-it-mark": "^3.0.0",

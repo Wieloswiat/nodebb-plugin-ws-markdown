@@ -433,7 +433,6 @@ var Markdown = {
         parser.use(require("markdown-it-deflist"));
         parser.use(require("markdown-it-classy"));
         parser.use(require("markdown-it-hashtag"));
-        parser.use(require("markdown-it-html5-media"));
         // Update renderer to add some classes to all images
         var renderImage =
             parser.renderer.rules.image ||
