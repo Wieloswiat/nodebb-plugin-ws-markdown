@@ -1,51 +1,60 @@
 {
-  "name": "nodebb-plugin-markdown",
-  "version": "8.12.1",
-  "description": "A Markdown parser for NodeBB",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/julianlam/nodebb-plugin-markdown"
-  },
-  "keywords": [
-    "nodebb",
-    "plugin",
-    "markdown"
-  ],
-  "author": "Julian Lam <julian@designcreateplay.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/julianlam/nodebb-plugin-markdown/issues"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    "name": "nodebb-plugin-ws-markdown",
+    "version": "8.13.8",
+    "description": "A Markdown parser for NodeBB",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Wieloswiat/nodebb-plugin-markdown"
+    },
+    "keywords": [
+        "nodebb",
+        "plugin",
+        "markdown"
+    ],
+    "author": "Julian Lam <julian@designcreateplay.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Wieloswiat/nodebb-plugin-markdown/issues"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "lint-staged": {
+        "*.js": [
+            "eslint --fix",
+            "git add"
+        ]
+    },
+    "dependencies": {
+        "async": "^3.2.0",
+        "highlight.js": "9.14.2",
+        "markdown-it": "^10.0.0",
+        "markdown-it-abbr": "^1.0.4",
+        "markdown-it-attrs": "^3.0.3",
+        "markdown-it-checkbox": "^1.1.0",
+        "markdown-it-deflist": "^2.0.3",
+        "markdown-it-hashtag": "^0.4.0",
+        "markdown-it-inline-comments": "^1.0.1",
+        "markdown-it-ins": "^3.0.0",
+        "markdown-it-mark": "^3.0.0",
+        "markdown-it-multimd-table": "^4.0.1",
+        "markdown-it-smartarrows": "^1.0.1",
+        "markdown-it-sub": "^1.0.0",
+        "markdown-it-sup": "^1.0.0"
+    },
+    "nbbpm": {
+        "compatibility": "^1.6.0"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^9.1.2",
+        "@commitlint/config-angular": "^7.1.2",
+        "eslint": "^7.7.0",
+        "eslint-config-airbnb-base": "^12.1.0",
+        "eslint-plugin-import": "^2.8.0",
+        "husky": "^2.4.0",
+        "lint-staged": "^10.0.9"
     }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "dependencies": {
-    "async": "^3.2.0",
-    "highlight.js": "9.14.2",
-    "markdown-it": "^10.0.0",
-    "markdown-it-checkbox": "^1.1.0",
-    "markdown-it-multimd-table": "^4.0.1"
-  },
-  "nbbpm": {
-    "compatibility": "^1.6.0"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^9.1.2",
-    "@commitlint/config-angular": "^7.1.2",
-    "eslint": "^7.7.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "husky": "^2.4.0",
-    "lint-staged": "^10.0.9"
-  }
 }
